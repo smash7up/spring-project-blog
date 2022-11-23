@@ -1,0 +1,39 @@
+CREATE DATABASE IF NOT EXISTS blog;
+
+USE blog;
+
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS post_category;
+
+CREATE TABLE user (
+id INT NOT NULL AUTO_INCREMENT,
+pseudo VARCHAR(55),
+password VARCHAR(55),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE post (
+id INT NOT NULL AUTO_INCREMENT,
+title VARCHAR(55),
+content TEXT,
+picture VARCHAR(255),
+date DATE,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE category (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(55),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE post_category (
+id INT NOT NULL AUTO_INCREMENT,
+post_id INT NOT NULL,
+category_id INT NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (post_id) REFERENCES post(id),
+FOREIGN KEY (category_id) REFERENCES category(id)
+);
