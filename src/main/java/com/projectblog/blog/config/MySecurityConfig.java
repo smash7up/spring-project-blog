@@ -19,9 +19,9 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
+                .antMatchers("/userlogin").permitAll()
                 .antMatchers("/posts").hasRole("admin")
                 .antMatchers("/category").hasRole("admin")
-                .antMatchers("/user/login").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
