@@ -1,9 +1,9 @@
 package com.projectblog.blog.repository;
 
-import com.projectblog.blog.entities.Category;
+import com.projectblog.blog.entities.CategoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 }

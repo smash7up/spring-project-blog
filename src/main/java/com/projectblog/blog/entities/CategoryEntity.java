@@ -6,17 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Category {
+public class CategoryEntity {
     private String name;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    public Category() {
+    public CategoryEntity() {
     }
 
-    public Category(String name) {
+    public CategoryEntity(String name) {
         this.setId(id);
         this.setName(name);
     }

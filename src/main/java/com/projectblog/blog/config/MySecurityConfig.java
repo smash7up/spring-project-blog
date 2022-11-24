@@ -19,13 +19,16 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .antMatchers("/user/login").permitAll()
-                .antMatchers("/post").hasRole("admin")
+                .antMatchers("/posts").hasRole("admin")
                 .antMatchers("/category").hasRole("admin")
+                .antMatchers("/user/login").permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .formLogin()
                 .and()
                 .httpBasic();
+        http.cors();
     }
 
     @Override

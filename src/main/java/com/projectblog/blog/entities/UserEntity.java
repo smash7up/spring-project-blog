@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class UserEntity {
     private String pseudo;
     private String password;
 
@@ -14,10 +14,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    public User() {
+    public UserEntity() {
     }
 
-    public User(String pseudo, String password) {
+    public UserEntity(String pseudo, String password) {
         this.setId(id);
         this.setPseudo(pseudo);
         this.setPassword(password);

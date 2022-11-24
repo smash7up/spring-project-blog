@@ -1,16 +1,14 @@
 package com.projectblog.blog.controller;
 
-import com.projectblog.blog.entities.Category;
+import com.projectblog.blog.entities.CategoryEntity;
 import com.projectblog.blog.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class CategoryController {
 
     @Autowired
@@ -18,17 +16,17 @@ public class CategoryController {
 
     @GetMapping("/categories")
     @ResponseBody
-    public List<Category> getCategory() {
-        List<Category> categoryList = repository.findAll();
+    public List<CategoryEntity> getCategory() {
+        List<CategoryEntity> categoryList = repository.findAll();
         return categoryList;
     }
 
     @GetMapping("/category")
     @ResponseBody
-    public Category getCategoryById(@RequestParam(required = false) Long id) {
-        Category category = new Category();
+    public CategoryEntity getCategoryById(@RequestParam(required = false) Long id) {
+        CategoryEntity category = new CategoryEntity();
         if (id != null) {
-            Optional<Category> optionalCategory = repository.findById(id);
+            Optional<CategoryEntity> optionalCategory = repository.findById(id);
             if (optionalCategory.isPresent()) {
                 category = optionalCategory.get();
             }
@@ -37,8 +35,8 @@ public class CategoryController {
     }
 
     @PostMapping("/category/list")
-    public void postCategory(@RequestBody Category category) {
-        Category newCategory = repository.save(category);
+    public void postCategory(@RequestBody CategoryEntity category) {
+        CategoryEntity newCategory = repository.save(category);
     }
 
     @DeleteMapping("/category/delete")

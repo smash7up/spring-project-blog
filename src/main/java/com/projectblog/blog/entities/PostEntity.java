@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Post {
+public class PostEntity {
     private String title;
     private String content;
     private String picture;
@@ -16,10 +16,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    public Post() {
+    public PostEntity() {
     }
 
-    public Post(String title, String content, String picture, String date) {
+    public PostEntity(String title, String content, String picture, String date) {
         this.setId(id);
         this.setTitle(title);
         this.setContent(content);
