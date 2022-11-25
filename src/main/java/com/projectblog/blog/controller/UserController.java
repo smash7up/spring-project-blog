@@ -24,14 +24,14 @@ public class UserController {
         return userList;
     }
     /* Log et vérifie que le pseudo et le password correspondent*/
-    @GetMapping("/userlogin")
+    @RequestMapping("/userlogin")
     @ResponseBody
-    public UserEntity login(@RequestBody UserEntity lUser) throws Exception, UsernameNotFoundException {
-        UserEntity user = repository.findByPseudo(lUser.getPseudo());
+    public UserEntity login(@RequestBody UserEntity loginUser) throws Exception, UsernameNotFoundException {
+        UserEntity user = repository.findByPseudo(loginUser.getPseudo());
         if(user == null)  {
             throw new UsernameNotFoundException("L'utilisateur n'existe pas");
         }
-        if(!user.getPassword().equals(lUser.getPassword())) {
+        if(!user.getPassword().equals(loginUser.getPassword())) {
             throw new Exception("Mauvais mot de passe");
         }
         return user;
